@@ -1,6 +1,6 @@
 package com.oskarro.doortodoor.model;
 
-public class Product {
+public class Product extends BaseEntity {
 
     private ProductType productType;
     private Owner owner;
