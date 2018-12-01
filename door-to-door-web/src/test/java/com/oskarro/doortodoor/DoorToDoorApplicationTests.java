@@ -1,4 +1,4 @@
-package doortodoor;
+package com.oskarro.doortodoor;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
