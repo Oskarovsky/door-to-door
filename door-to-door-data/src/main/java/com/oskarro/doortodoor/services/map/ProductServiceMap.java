@@ -21,7 +21,7 @@ public class ProductServiceMap extends AbstractMapService<Product, Long> impleme
 
     @Override
     public Product save(Product object) {
-        return super.save(object.getId(), object);
+        return super.save(object);
     }
 
     @Override

@@ -26,13 +26,11 @@ public class DataLoader implements CommandLineRunner {
 
         // CREATING NEW OWNERS
         Owner owner1 = new Owner();
-        owner1.setId(1L);
         owner1.setFirstName("Michael");
         owner1.setLastName("Weston");
         ownerService.save(owner1);
 
         Owner owner2 = new Owner();
-        owner2.setId(2L);
         owner2.setFirstName("Fiona");
         owner2.setLastName("Glenne");
         ownerService.save(owner2);
@@ -42,13 +40,11 @@ public class DataLoader implements CommandLineRunner {
 
         // CREATING NEW COURIERS
         Courier courier1 = new Courier();
-        courier1.setId(1L);
         courier1.setFirstName("David");
         courier1.setLastName("Beckham");
         courierService.save(courier1);
 
         Courier courier2 = new Courier();
-        courier2.setId(2L);
         courier2.setFirstName("Meganne");
         courier2.setLastName(" Awsone");
         courierService.save(courier2);

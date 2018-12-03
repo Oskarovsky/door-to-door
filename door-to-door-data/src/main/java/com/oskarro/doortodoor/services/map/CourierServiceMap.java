@@ -21,7 +21,7 @@ public class CourierServiceMap extends AbstractMapService<Courier, Long> impleme
 
     @Override
     public Courier save(Courier object) {
-        return super.save(object.getId(), object);
+        return super.save(object);
     }
 
     @Override
