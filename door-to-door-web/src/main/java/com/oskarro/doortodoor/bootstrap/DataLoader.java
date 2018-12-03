@@ -48,7 +48,7 @@ public class DataLoader implements CommandLineRunner {
         courierService.save(courier1);
 
         Courier courier2 = new Courier();
-        courier2.setId(1L);
+        courier2.setId(2L);
         courier2.setFirstName("Meganne");
         courier2.setLastName(" Awsone");
         courierService.save(courier2);

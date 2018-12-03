@@ -19,6 +19,7 @@ public class OwnerController {
     @RequestMapping({"", "/", "/index", "/index.html"})
     public String listOwners(Model model) {
 
+        // Spring MVC inject the model
         model.addAttribute("owners", ownerService.findAll());
         return "owners/index";
     }

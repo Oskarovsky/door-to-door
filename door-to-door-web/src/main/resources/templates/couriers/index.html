@@ -5,7 +5,27 @@
     <title>List of Couriers</title>
 </head>
 <body>
+    <!--/*@thymesVar id="courier" type="com.oskarro.doortodoor.model.Courier"*/-->
     <h1 th:text="'List of Couriers'">List of Couriers...</h1>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Setting up an iterator -->
+        <tr th:each="courier : ${couriers}">
+            <!--/*@thymesVar id="id" type=""*/-->
+            <td th:text="${courier.id}">1</td>
+            <td th:text="${courier.firstName}">Joe</td>
+            <td th:text="${courier.lastName}">Buck</td>
+        </tr>
+        </tbody>
+    </table>
 
 </body>
 </html>
