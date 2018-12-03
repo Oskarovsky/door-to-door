@@ -2,9 +2,11 @@ package com.oskarro.doortodoor.services.map;
 
 import com.oskarro.doortodoor.model.Owner;
 import com.oskarro.doortodoor.services.OwnerService;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
+@Service
 public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements OwnerService {
 
     @Override

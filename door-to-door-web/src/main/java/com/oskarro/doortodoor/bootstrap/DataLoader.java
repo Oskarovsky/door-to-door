@@ -4,8 +4,6 @@ import com.oskarro.doortodoor.model.Courier;
 import com.oskarro.doortodoor.model.Owner;
 import com.oskarro.doortodoor.services.CourierService;
 import com.oskarro.doortodoor.services.OwnerService;
-import com.oskarro.doortodoor.services.map.CourierServiceMap;
-import com.oskarro.doortodoor.services.map.OwnerServiceMap;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -17,10 +15,10 @@ public class DataLoader implements CommandLineRunner {
     private final CourierService courierService;
     //private final ProductService productService;
 
-    public DataLoader() {
-        ownerService = new OwnerServiceMap();
-        courierService = new CourierServiceMap();
-        //productService = new ProductServiceMap();
+    // from Spring 4.2 @Autowired isn't necessary
+    public DataLoader(OwnerService ownerService, CourierService courierService) {
+        this.ownerService = ownerService;
+        this.courierService = courierService;
     }
 
     @Override
