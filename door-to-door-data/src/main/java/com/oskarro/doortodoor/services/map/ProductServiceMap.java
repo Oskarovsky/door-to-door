@@ -1,11 +1,11 @@
 package com.oskarro.doortodoor.services.map;
 
 import com.oskarro.doortodoor.model.Product;
-import com.oskarro.doortodoor.services.CrudService;
+import com.oskarro.doortodoor.services.ProductService;
 
 import java.util.Set;
 
-public class ProductServiceMap extends AbstractMapService<Product, Long> implements CrudService<Product, Long> {
+public class ProductServiceMap extends AbstractMapService<Product, Long> implements ProductService {
 
     @Override
     public Set<Product> findAll() {
