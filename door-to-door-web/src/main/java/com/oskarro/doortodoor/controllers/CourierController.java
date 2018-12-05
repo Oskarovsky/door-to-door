@@ -5,7 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@RequestMapping("/couriers")
+@RequestMapping
 @Controller
 public class CourierController {
 
@@ -16,7 +16,7 @@ public class CourierController {
         this.courierService = courierService;
     }
 
-    @RequestMapping({"", "/", "/index", "/index.html"})
+    @RequestMapping({"/couriers", "/couriers/index", "/couriers/index.html", "/couriers.html"})
     public String listCouriers(Model model) {
 
         // Spring MVC inject the model
