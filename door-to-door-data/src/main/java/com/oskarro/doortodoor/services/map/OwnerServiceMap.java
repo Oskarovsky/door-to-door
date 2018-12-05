@@ -1,13 +1,24 @@
 package com.oskarro.doortodoor.services.map;
 
 import com.oskarro.doortodoor.model.Owner;
+import com.oskarro.doortodoor.model.Product;
 import com.oskarro.doortodoor.services.OwnerService;
+import com.oskarro.doortodoor.services.ProductService;
+import com.oskarro.doortodoor.services.ProductTypeService;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
 @Service
 public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements OwnerService {
+
+    private final ProductTypeService productTypeService;
+    private final ProductService productService;
+
+    public OwnerServiceMap(ProductTypeService productTypeService, ProductService productService) {
+        this.productTypeService = productTypeService;
+        this.productService = productService;
+    }
 
     @Override
     public Set<Owner> findAll() {
@@ -21,7 +32,28 @@ public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements 
 
     @Override
     public Owner save(Owner object) {
-        return super.save(object);
+
+        if (object != null) {
+            if (object.getProducts() != null) {
+                object.getProducts().forEach(product -> {
+                    if (product.getProductType() != null) {
+                        if(product.getProductType().getId() == null) {
+                            product.setProductType((productTypeService.save(product.getProductType())));
+                        }
+                    } else {
+                        throw new RuntimeException("Product Type is required");
+                    }
+
+                    if(product.getId() == null) {
+                        Product savedProduct = productService.save(product);
+                        product.setId(savedProduct.getId());
+                    }
+                });
+            }
+            return super.save(object);
+        } else {
+            return null;
+        }
     }
 
     @Override

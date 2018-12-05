@@ -1,10 +1,11 @@
 package com.oskarro.doortodoor.model;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class Courier extends Person {
 
-    private Set<Speciality> specalities;
+    private Set<Speciality> specalities = new HashSet<>();
     private String equipment;
     private String company;
 

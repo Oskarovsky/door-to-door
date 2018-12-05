@@ -2,6 +2,7 @@ package com.oskarro.doortodoor.bootstrap;
 
 import com.oskarro.doortodoor.model.Courier;
 import com.oskarro.doortodoor.model.Owner;
+import com.oskarro.doortodoor.model.Product;
 import com.oskarro.doortodoor.model.ProductType;
 import com.oskarro.doortodoor.services.CourierService;
 import com.oskarro.doortodoor.services.OwnerService;
@@ -49,6 +50,18 @@ public class DataLoader implements CommandLineRunner {
         owner1.setCity("New York");
         owner1.setTelephone("700-482-011");
         ownerService.save(owner1);
+        // creating pet for the owner
+        Product mikesProduct = new Product();
+        mikesProduct.setProductType(savedFoodProductType);
+        mikesProduct.setOwner(owner1);
+        mikesProduct.setName("McChicken collection");
+        mikesProduct.setDescription("McChicken, double french fries, cola zero");
+        mikesProduct.setSize("small");
+        mikesProduct.setPrice("13.99$");
+        mikesProduct.setImageUrl("http://website.com");
+        mikesProduct.setEndLocalization("Warsaw, Polaka Street, 3/60");
+        mikesProduct.setStartLocalization("McDonald, Warsaw, Rzeczki Street, 11/94");
+        owner1.getProducts().add(mikesProduct);
 
         Owner owner2 = new Owner();
         owner2.setFirstName("Fiona");
@@ -57,6 +70,18 @@ public class DataLoader implements CommandLineRunner {
         owner2.setTelephone("666-391-301");
         owner2.setCity("Chicago");
         ownerService.save(owner2);
+        // creating pet for the owner
+        Product fionasProduct = new Product();
+        fionasProduct.setProductType(animal);
+        fionasProduct.setOwner(owner2);
+        fionasProduct.setName("Husky Dog");
+        fionasProduct.setDescription("The big one, 2 years, white");
+        fionasProduct.setSize("18kg, 40x90cm");
+        fionasProduct.setPrice("null");
+        fionasProduct.setImageUrl("http://dogphoto");
+        fionasProduct.setEndLocalization("Katowice, Nowogrodzka Street, 11/75F");
+        fionasProduct.setStartLocalization("Gdańsk, Warmia Street, 3/10");
+        owner2.getProducts().add(fionasProduct);
 
         Owner owner3 = new Owner();
         owner3.setFirstName("Andrew");
