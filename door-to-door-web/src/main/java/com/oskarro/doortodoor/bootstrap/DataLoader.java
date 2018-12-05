@@ -1,12 +1,10 @@
 package com.oskarro.doortodoor.bootstrap;
 
-import com.oskarro.doortodoor.model.Courier;
-import com.oskarro.doortodoor.model.Owner;
-import com.oskarro.doortodoor.model.Product;
-import com.oskarro.doortodoor.model.ProductType;
+import com.oskarro.doortodoor.model.*;
 import com.oskarro.doortodoor.services.CourierService;
 import com.oskarro.doortodoor.services.OwnerService;
 import com.oskarro.doortodoor.services.ProductTypeService;
+import com.oskarro.doortodoor.services.SpecialityService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -17,17 +15,28 @@ public class DataLoader implements CommandLineRunner {
     private final OwnerService ownerService;
     private final CourierService courierService;
     private final ProductTypeService productTypeService;
+    private final SpecialityService specialityService;
+
 
     // from Spring 4.2 @Autowired isn't necessary
-    public DataLoader(OwnerService ownerService, CourierService courierService, ProductTypeService productTypeService) {
+    public DataLoader(OwnerService ownerService, CourierService courierService,
+                      ProductTypeService productTypeService, SpecialityService specialityService) {
         this.ownerService = ownerService;
         this.courierService = courierService;
         this.productTypeService = productTypeService;
+        this.specialityService = specialityService;
     }
 
     @Override
     public void run(String... args) throws Exception {
 
+        int count = productTypeService.findAll().size();
+        if (count == 0) {
+            loadData();
+        }
+    }
+
+    private void loadData() {
         // CREATING PRODUCT TYPES
         ProductType food = new ProductType();
         food.setName("Food");
@@ -41,6 +50,18 @@ public class DataLoader implements CommandLineRunner {
         food.setName("Animal");
         ProductType savedAnimalProductType = productTypeService.save(animal);
 
+        // CREATING SPECIALITIES
+        Speciality localProvider = new Speciality();
+        localProvider.setDescription("Local Provider");
+        Speciality savedLocalProvider = specialityService.save(localProvider);
+
+        Speciality domesticProvider = new Speciality();
+        localProvider.setDescription("Domestic Provider");
+        Speciality savedDomesticProvider = specialityService.save(domesticProvider);
+
+        Speciality internationalProvider = new Speciality();
+        localProvider.setDescription("International Provider");
+        Speciality savedInternationalProvider = specialityService.save(internationalProvider);
 
         // CREATING NEW OWNERS
         Owner owner1 = new Owner();
@@ -101,6 +122,7 @@ public class DataLoader implements CommandLineRunner {
         courier1.setEquipment("Renault Megane 4X");
         courier1.setCompany("Koliber SCO");
         courierService.save(courier1);
+        courier1.getSpecialities().add(savedDomesticProvider);
 
         Courier courier2 = new Courier();
         courier2.setFirstName("Meganne");
@@ -108,6 +130,7 @@ public class DataLoader implements CommandLineRunner {
         courier2.setEquipment("Bike RM-30 Holland");
         courier2.setCompany("UBER Eats");
         courierService.save(courier2);
+        courier2.getSpecialities().add(savedInternationalProvider);
 
         Courier courier3 = new Courier();
         courier3.setFirstName("John");
@@ -115,9 +138,8 @@ public class DataLoader implements CommandLineRunner {
         courier3.setEquipment("Seat Leoan 1.9 TD");
         courier3.setCompany("Koliber SCO");
         courierService.save(courier3);
+        courier3.getSpecialities().add(savedInternationalProvider);
 
         System.out.println("Loaded Couriers...");
-
-
     }
 }

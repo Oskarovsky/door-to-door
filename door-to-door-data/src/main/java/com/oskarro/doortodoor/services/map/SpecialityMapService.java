@@ -1,11 +1,13 @@
 package com.oskarro.doortodoor.services.map;
 
 import com.oskarro.doortodoor.model.Speciality;
-import com.oskarro.doortodoor.services.SpecialitiesService;
+import com.oskarro.doortodoor.services.SpecialityService;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
-public class SpecialityMapServer extends AbstractMapService<Speciality, Long> implements SpecialitiesService {
+@Service
+public class SpecialityMapService extends AbstractMapService<Speciality, Long> implements SpecialityService {
 
     @Override
     public Set<Speciality> findAll() {

@@ -5,7 +5,7 @@ import java.util.Set;
 
 public class Courier extends Person {
 
-    private Set<Speciality> specalities = new HashSet<>();
+    private Set<Speciality> specialities = new HashSet<>();
     private String equipment;
     private String company;
 
@@ -25,11 +25,11 @@ public class Courier extends Person {
         this.company = company;
     }
 
-    public Set<Speciality> getSpecalities() {
-        return specalities;
+    public Set<Speciality> getSpecialities() {
+        return specialities;
     }
 
-    public void setSpecalities(Set<Speciality> specalities) {
-        this.specalities = specalities;
+    public void setSpecialities(Set<Speciality> specialities) {
+        this.specialities = specialities;
     }
 }
