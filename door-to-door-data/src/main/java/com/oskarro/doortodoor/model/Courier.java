@@ -5,7 +5,6 @@ import java.util.Set;
 public class Courier extends Person {
 
     private Set<Speciality> specalities;
-
     private String equipment;
     private String company;
 
