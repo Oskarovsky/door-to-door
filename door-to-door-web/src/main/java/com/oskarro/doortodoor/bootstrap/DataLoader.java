@@ -2,8 +2,10 @@ package com.oskarro.doortodoor.bootstrap;
 
 import com.oskarro.doortodoor.model.Courier;
 import com.oskarro.doortodoor.model.Owner;
+import com.oskarro.doortodoor.model.ProductType;
 import com.oskarro.doortodoor.services.CourierService;
 import com.oskarro.doortodoor.services.OwnerService;
+import com.oskarro.doortodoor.services.ProductTypeService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -13,16 +15,31 @@ public class DataLoader implements CommandLineRunner {
 
     private final OwnerService ownerService;
     private final CourierService courierService;
-    //private final ProductService productService;
+    private final ProductTypeService productTypeService;
 
     // from Spring 4.2 @Autowired isn't necessary
-    public DataLoader(OwnerService ownerService, CourierService courierService) {
+    public DataLoader(OwnerService ownerService, CourierService courierService, ProductTypeService productTypeService) {
         this.ownerService = ownerService;
         this.courierService = courierService;
+        this.productTypeService = productTypeService;
     }
 
     @Override
     public void run(String... args) throws Exception {
+
+        // CREATING PRODUCT TYPES
+        ProductType food = new ProductType();
+        food.setName("Food");
+        ProductType savedFoodProductType = productTypeService.save(food);
+
+        ProductType car = new ProductType();
+        food.setName("Car");
+        ProductType savedCarProductType = productTypeService.save(car);
+
+        ProductType animal = new ProductType();
+        food.setName("Animal");
+        ProductType savedAnimalProductType = productTypeService.save(animal);
+
 
         // CREATING NEW OWNERS
         Owner owner1 = new Owner();
