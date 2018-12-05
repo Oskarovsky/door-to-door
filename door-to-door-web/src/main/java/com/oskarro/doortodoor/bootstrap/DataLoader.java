@@ -41,6 +41,14 @@ public class DataLoader implements CommandLineRunner {
         owner2.setCity("Chicago");
         ownerService.save(owner2);
 
+        Owner owner3 = new Owner();
+        owner3.setFirstName("Andrew");
+        owner3.setLastName("Darkflame");
+        owner3.setAddress("Koszykowa Street, 33/1");
+        owner3.setTelephone("601-005-661");
+        owner3.setCity("Warsaw");
+        ownerService.save(owner3);
+
         System.out.println("Loaded Owners...");
 
 
@@ -48,12 +56,23 @@ public class DataLoader implements CommandLineRunner {
         Courier courier1 = new Courier();
         courier1.setFirstName("David");
         courier1.setLastName("Beckham");
+        courier1.setEquipment("Renault Megane 4X");
+        courier1.setCompany("Koliber SCO");
         courierService.save(courier1);
 
         Courier courier2 = new Courier();
         courier2.setFirstName("Meganne");
         courier2.setLastName(" Awsone");
+        courier2.setEquipment("Bike RM-30 Holland");
+        courier2.setCompany("UBER Eats");
         courierService.save(courier2);
+
+        Courier courier3 = new Courier();
+        courier3.setFirstName("John");
+        courier3.setLastName("Starridge");
+        courier3.setEquipment("Seat Leoan 1.9 TD");
+        courier3.setCompany("Koliber SCO");
+        courierService.save(courier3);
 
         System.out.println("Loaded Couriers...");
 

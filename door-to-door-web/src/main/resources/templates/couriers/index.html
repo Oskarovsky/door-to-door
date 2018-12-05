@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout (~{::body},'couriers')}">>
 <head>
     <meta charset="UTF-8">
     <title>List of Couriers</title>
@@ -8,12 +9,14 @@
     <!--/*@thymesVar id="courier" type="com.oskarro.doortodoor.model.Courier"*/-->
     <h1 th:text="'List of Couriers'">List of Couriers...</h1>
 
-    <table>
+    <table class="table table-striped">
         <thead>
         <tr>
-            <th>Id</th>
-            <th>First Name</th>
-            <th>Last Name</th>
+            <th style="width: 20px">Id</th>
+            <th style="width: 100px">First Name</th>
+            <th style="width: 100px">Last Name</th>
+            <th style="width: 80px">Equipment</th>
+            <th style="width: 80px">Company</th>
         </tr>
         </thead>
         <tbody>
@@ -23,6 +26,8 @@
             <td th:text="${courier.id}">1</td>
             <td th:text="${courier.firstName}">Joe</td>
             <td th:text="${courier.lastName}">Buck</td>
+            <td th:text="${courier.equipment}">Maluch GTX</td>
+            <td th:text="${courier.company}">Uber Eats</td>
         </tr>
         </tbody>
     </table>
