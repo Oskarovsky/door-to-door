@@ -1,17 +1,38 @@
 package com.oskarro.doortodoor.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "products")
 public class Product extends BaseEntity {
 
+    @ManyToOne
+    @JoinColumn(name = "type_id")
     private ProductType productType;
+
+    @ManyToOne
+    @JoinColumn(name = "owner_id")
     private Owner owner;
 
+    @Column(name = "name")
     private String name;
-    private String productId;
+
+    @Column(name = "description")
     private String description;
+
+    @Column(name = "size")
     private String size;
+
+    @Column(name = "price")
     private String price;
+
+    @Column(name = "image_url")
     private String imageUrl;
+
+    @Column(name = "end_localization")
     private String endLocalization;
+
+    @Column(name = "start_localization")
     private String startLocalization;
 
     public ProductType getProductType() {
@@ -36,14 +57,6 @@ public class Product extends BaseEntity {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getProductId() {
-        return productId;
-    }
-
-    public void setProductId(String productId) {
-        this.productId = productId;
     }
 
     public String getDescription() {
