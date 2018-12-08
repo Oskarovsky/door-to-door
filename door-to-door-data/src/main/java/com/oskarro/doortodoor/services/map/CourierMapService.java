@@ -4,11 +4,13 @@ import com.oskarro.doortodoor.model.Courier;
 import com.oskarro.doortodoor.model.Speciality;
 import com.oskarro.doortodoor.services.CourierService;
 import com.oskarro.doortodoor.services.SpecialityService;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
 @Service
+@Profile({"default", "map"})
 public class CourierMapService extends AbstractMapService<Courier, Long> implements CourierService {
 
     private final SpecialityService specialityService;
