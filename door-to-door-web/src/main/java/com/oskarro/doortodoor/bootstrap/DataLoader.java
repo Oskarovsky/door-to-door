@@ -1,12 +1,11 @@
 package com.oskarro.doortodoor.bootstrap;
 
 import com.oskarro.doortodoor.model.*;
-import com.oskarro.doortodoor.services.CourierService;
-import com.oskarro.doortodoor.services.OwnerService;
-import com.oskarro.doortodoor.services.ProductTypeService;
-import com.oskarro.doortodoor.services.SpecialityService;
+import com.oskarro.doortodoor.services.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+
+import java.time.LocalDate;
 
 // Spring Boot specific way to initialise data - CommandLineRunner
 @Component
@@ -16,15 +15,17 @@ public class DataLoader implements CommandLineRunner {
     private final CourierService courierService;
     private final ProductTypeService productTypeService;
     private final SpecialityService specialityService;
+    private final DeliveryService deliveryService;
 
 
     // from Spring 4.2 @Autowired isn't necessary
     public DataLoader(OwnerService ownerService, CourierService courierService,
-                      ProductTypeService productTypeService, SpecialityService specialityService) {
+                      ProductTypeService productTypeService, SpecialityService specialityService, DeliveryService deliveryService) {
         this.ownerService = ownerService;
         this.courierService = courierService;
         this.productTypeService = productTypeService;
         this.specialityService = specialityService;
+        this.deliveryService = deliveryService;
     }
 
     @Override
@@ -91,6 +92,8 @@ public class DataLoader implements CommandLineRunner {
         owner2.setTelephone("666-391-301");
         owner2.setCity("Chicago");
         ownerService.save(owner2);
+
+
         // creating pet for the owner
         Product fionasProduct = new Product();
         fionasProduct.setProductType(animal);
@@ -141,5 +144,14 @@ public class DataLoader implements CommandLineRunner {
         courier3.getSpecialities().add(savedInternationalProvider);
 
         System.out.println("Loaded Couriers...");
+
+
+        Delivery dogDelivery = new Delivery();
+        dogDelivery.setCourier(courier1);
+        dogDelivery.setDate(LocalDate.now());
+        dogDelivery.setCost("150$");
+        dogDelivery.setDescription("Fast delivery. No problem with transport.");
+        deliveryService.save(dogDelivery);
+
     }
 }
