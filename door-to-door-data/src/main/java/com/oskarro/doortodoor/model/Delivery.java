@@ -13,16 +13,13 @@ public class Delivery extends BaseEntity {
     @Column(name = "description")
     private String description;
 
-    @OneToOne
-    @JoinColumn(name = "product_id")
-    private Product product;
+    @Column(name = "cost")
+    private String cost;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "courier_id")
     private Courier courier;
 
-    @Column(name = "cost")
-    private String cost;
 
     public LocalDate getDate() {
         return date;
@@ -38,14 +35,6 @@ public class Delivery extends BaseEntity {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
     }
 
     public Courier getCourier() {

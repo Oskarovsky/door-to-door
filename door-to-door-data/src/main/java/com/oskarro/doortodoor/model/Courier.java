@@ -15,6 +15,9 @@ public class Courier extends Person {
             inverseJoinColumns = @JoinColumn(name = "speciality_id"))
     private Set<Speciality> specialities = new HashSet<>();
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "courier")
+    private Set<Delivery> deliveries = new HashSet<>();
+
     @Column(name = "equipment")
     private String equipment;
 
@@ -43,5 +46,13 @@ public class Courier extends Person {
 
     public void setSpecialities(Set<Speciality> specialities) {
         this.specialities = specialities;
+    }
+
+    public Set<Delivery> getDeliveries() {
+        return deliveries;
+    }
+
+    public void setDeliveries(Set<Delivery> deliveries) {
+        this.deliveries = deliveries;
     }
 }

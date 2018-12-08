@@ -14,14 +14,6 @@ public class Product extends BaseEntity {
     @JoinColumn(name = "owner_id")
     private Owner owner;
 
-    @OneToOne
-    @JoinColumn(name = "delivery_id")
-    private Delivery delivery;
-
-    @OneToOne
-    @JoinColumn(name = "courier_id")
-    private Courier courier;
-
     @Column(name = "name")
     private String name;
 
@@ -42,22 +34,6 @@ public class Product extends BaseEntity {
 
     @Column(name = "start_localization")
     private String startLocalization;
-
-    public Courier getCourier() {
-        return courier;
-    }
-
-    public void setCourier(Courier courier) {
-        this.courier = courier;
-    }
-
-    public Delivery getDelivery() {
-        return delivery;
-    }
-
-    public void setDelivery(Delivery delivery) {
-        this.delivery = delivery;
-    }
 
     public ProductType getProductType() {
         return productType;
