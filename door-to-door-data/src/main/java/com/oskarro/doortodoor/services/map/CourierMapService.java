@@ -9,11 +9,11 @@ import org.springframework.stereotype.Service;
 import java.util.Set;
 
 @Service
-public class CourierServiceMap extends AbstractMapService<Courier, Long> implements CourierService {
+public class CourierMapService extends AbstractMapService<Courier, Long> implements CourierService {
 
     private final SpecialityService specialityService;
 
-    public CourierServiceMap(SpecialityService specialityService) {
+    public CourierMapService(SpecialityService specialityService) {
         this.specialityService = specialityService;
     }
 
