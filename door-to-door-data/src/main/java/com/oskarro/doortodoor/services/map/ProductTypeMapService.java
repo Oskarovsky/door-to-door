@@ -2,11 +2,13 @@ package com.oskarro.doortodoor.services.map;
 
 import com.oskarro.doortodoor.model.ProductType;
 import com.oskarro.doortodoor.services.ProductTypeService;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
 @Service
+@Profile({"default", "map"})
 public class ProductTypeMapService extends AbstractMapService<ProductType, Long>  implements ProductTypeService {
 
     @Override

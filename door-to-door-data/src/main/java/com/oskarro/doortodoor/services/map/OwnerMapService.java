@@ -5,11 +5,13 @@ import com.oskarro.doortodoor.model.Product;
 import com.oskarro.doortodoor.services.OwnerService;
 import com.oskarro.doortodoor.services.ProductService;
 import com.oskarro.doortodoor.services.ProductTypeService;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
 @Service
+@Profile({"default", "map"})
 public class OwnerMapService extends AbstractMapService<Owner, Long> implements OwnerService {
 
     private final ProductTypeService productTypeService;
