@@ -71,7 +71,7 @@ public class DataLoader implements CommandLineRunner {
         owner1.setAddress("St. Etienne Street, 290/15");
         owner1.setCity("New York");
         owner1.setTelephone("700-482-011");
-        ownerService.save(owner1);
+
         // creating pet for the owner
         Product mikesProduct = new Product();
         mikesProduct.setProductType(savedFoodProductType);
@@ -84,6 +84,8 @@ public class DataLoader implements CommandLineRunner {
         mikesProduct.setEndLocalization("Warsaw, Polaka Street, 3/60");
         mikesProduct.setStartLocalization("McDonald, Warsaw, Rzeczki Street, 11/94");
         owner1.getProducts().add(mikesProduct);
+        ownerService.save(owner1);
+
 
         Owner owner2 = new Owner();
         owner2.setFirstName("Fiona");
@@ -91,8 +93,6 @@ public class DataLoader implements CommandLineRunner {
         owner2.setAddress("Lylianna Street, 199/2A");
         owner2.setTelephone("666-391-301");
         owner2.setCity("Chicago");
-        ownerService.save(owner2);
-
 
         // creating pet for the owner
         Product fionasProduct = new Product();
@@ -106,6 +106,7 @@ public class DataLoader implements CommandLineRunner {
         fionasProduct.setEndLocalization("Katowice, Nowogrodzka Street, 11/75F");
         fionasProduct.setStartLocalization("Gdańsk, Warmia Street, 3/10");
         owner2.getProducts().add(fionasProduct);
+        ownerService.save(owner2);
 
         Owner owner3 = new Owner();
         owner3.setFirstName("Andrew");
@@ -116,6 +117,7 @@ public class DataLoader implements CommandLineRunner {
         ownerService.save(owner3);
 
         System.out.println("Loaded Owners...");
+
 
 
         // CREATING NEW COURIERS
