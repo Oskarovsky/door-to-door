@@ -1,9 +1,16 @@
 package com.oskarro.doortodoor.model;
 
+import lombok.*;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
+@Setter
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity
 @Table(name = "couriers")
 public class Courier extends Person {
@@ -24,35 +31,4 @@ public class Courier extends Person {
     @Column(name = "company")
     private String company;
 
-    public String getEquipment() {
-        return equipment;
-    }
-
-    public void setEquipment(String equipment) {
-        this.equipment = equipment;
-    }
-
-    public String getCompany() {
-        return company;
-    }
-
-    public void setCompany(String company) {
-        this.company = company;
-    }
-
-    public Set<Speciality> getSpecialities() {
-        return specialities;
-    }
-
-    public void setSpecialities(Set<Speciality> specialities) {
-        this.specialities = specialities;
-    }
-
-    public Set<Delivery> getDeliveries() {
-        return deliveries;
-    }
-
-    public void setDeliveries(Set<Delivery> deliveries) {
-        this.deliveries = deliveries;
-    }
 }
