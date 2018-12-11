@@ -59,7 +59,7 @@
     <scm>
         <developerConnection>scm:git:https://github.com/Oskarovsky/door-to-door.git</developerConnection>
         <tag>HEAD</tag>
-  </scm>
+    </scm>
 
 
 </project>
