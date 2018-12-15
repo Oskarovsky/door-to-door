@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout (~{::body},'owners')}">
+<body>
+
+
+<h2>Owner Information</h2>
+
+
+<table class="table table-striped" th:object="${owner}">
+    <tr>
+        <th>Name</th>
+        <td><b th:text="*{firstName + ' ' + lastName}"></b></td>
+    </tr>
+    <tr>
+        <th>Address</th>
+        <td th:text="*{address}" /></td>
+    </tr>
+    <tr>
+        <th>City</th>
+        <td th:text="*{city}" /></td>
+    </tr>
+    <tr>
+        <th>Telephone</th>
+        <td th:text="*{telephone}" /></td>
+    </tr>
+</table>
+
+<a th:href="@{{id}/edit(id=${owner.id})}" class="btn btn-default">Edit
+    Owner</a>
+<a th:href="@{{id}/products/new(id=${owner.id})}" class="btn btn-default">Add
+    New Product</a>
+
+<br />
+<br />
+<br />
+<h2>Products</h2>
+
+<table class="table table-striped">
+
+    <tr th:each="product : ${owner.products}">
+        <td valign="top">
+            <dl class="dl-horizontal">
+                <dt>Name</dt>
+                <dd th:text="${product.name}" /></dd>
+                <dt>Type</dt>
+                <dd th:text="${product.productType.name}" /></dd>
+                <dt>Description:</dt>
+                <dd th:text="${product.description}" /></dd>
+                <dt>Size:</dt>
+                <dd th:text="${product.size}" /></dd>
+                <dt>Value:</dt>
+                <dd th:text="${product.price}" /></dd>
+                <dt>End Localization:</dt>
+                <dd th:text="${product.endLocalization}" /></dd>
+                <dt>Start Localization:</dt>
+                <dd th:text="${product.startLocalization}" /></dd>
+                <dt>Image:</dt>
+                <dd th:text="${product.imageUrl}" /></dd>
+            </dl>
+        </td>
+
+        <td valign="top">
+            <table class="table-condensed">
+                <tr>
+                    <td><a
+                            th:href="@{{ownerId}/products/{productId}/edit(ownerId=${owner.id},productId=${product.id})}">Edit
+                        Product</a></td>
+            </table>
+        </td>
+
+    </tr>
+
+</table>
+
+</body>
+</html>
