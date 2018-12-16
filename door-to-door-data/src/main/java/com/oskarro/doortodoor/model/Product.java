@@ -3,6 +3,8 @@ package com.oskarro.doortodoor.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Setter
 @Getter
@@ -41,4 +43,7 @@ public class Product extends BaseEntity {
 
     @Column(name = "start_localization")
     private String startLocalization;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "product")
+    private Set<Delivery> deliveries = new HashSet<>();
 }

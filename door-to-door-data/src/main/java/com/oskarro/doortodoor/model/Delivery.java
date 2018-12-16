@@ -27,4 +27,12 @@ public class Delivery extends BaseEntity {
     @JoinColumn(name = "courier_id")
     private Courier courier;
 
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    private Product product;
+
+    public LocalDate getDate() {
+        return date;
+    }
+
 }
