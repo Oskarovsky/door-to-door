@@ -10,10 +10,15 @@ import javax.persistence.Table;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @Entity
 @Table(name = "types")
 public class ProductType extends BaseEntity {
+
+    @Builder    // remove annotation from the class level and put it into constructor
+    public ProductType(Long id, String name) {
+        super(id);
+        this.name = name;
+    }
 
     @Column(name = "name")
     private String name;
