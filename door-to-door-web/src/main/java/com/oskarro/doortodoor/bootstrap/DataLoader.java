@@ -32,6 +32,7 @@ public class DataLoader implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
         int count = productTypeService.findAll().size();
+
         if (count == 0) {
             loadData();
         }
@@ -43,12 +44,8 @@ public class DataLoader implements CommandLineRunner {
         food.setName("Food");
         ProductType savedFoodProductType = productTypeService.save(food);
 
-        ProductType car = new ProductType();
-        food.setName("Car");
-        ProductType savedCarProductType = productTypeService.save(car);
-
         ProductType animal = new ProductType();
-        food.setName("Animal");
+        animal.setName("Animal");
         ProductType savedAnimalProductType = productTypeService.save(animal);
 
         // CREATING SPECIALITIES
@@ -96,7 +93,7 @@ public class DataLoader implements CommandLineRunner {
 
         // creating pet for the owner
         Product fionasProduct = new Product();
-        fionasProduct.setProductType(animal);
+        fionasProduct.setProductType(savedAnimalProductType);
         fionasProduct.setOwner(owner2);
         fionasProduct.setName("Husky Dog");
         fionasProduct.setDescription("The big one, 2 years, white");

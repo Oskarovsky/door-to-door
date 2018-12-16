@@ -59,6 +59,7 @@ public class ProductController {
     public String initCreationForm(Owner owner, Model model) {
         Product product = new Product();
         owner.getProducts().add(product);
+        product.setOwner(owner);
         model.addAttribute("product", product);
         return VIEWS_PRODUCTS_CREATE_OR_UPDATE_FORM;
     }
