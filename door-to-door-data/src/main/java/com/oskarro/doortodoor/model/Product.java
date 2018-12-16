@@ -29,7 +29,12 @@ public class Product extends BaseEntity {
         this.imageUrl = imageUrl;
         this.endLocalization = endLocalization;
         this.startLocalization = startLocalization;
-        this.deliveries = deliveries;
+
+        // builder pattern - if we don't set the explicitly our initialization gets wiped out
+        // we won't have a empty hash
+        if (deliveries == null || deliveries.size() > 0) {
+            this.deliveries = deliveries;
+        }
     }
 
     @ManyToOne
