@@ -73,6 +73,7 @@ public class ProductController {
                 && owner.getProduct(product.getName(), true) != null) {
             result.rejectValue("name", "duplicate", "already exists");
         }
+        product.setOwner(owner);
         owner.getProducts().add(product);
         if (result.hasErrors()) {
             model.put("product", product);
@@ -98,13 +99,13 @@ public class ProductController {
     // for accepting product object back and save that
     @PostMapping("/products/{productId}/edit")
     public String processUpdateForm(@Valid Product product, BindingResult result, Owner owner, Model model) {
+        product.setOwner(owner);
         if (result.hasErrors()) {
-            product.setOwner(owner);
             model.addAttribute("product", product);
             return VIEWS_PRODUCTS_CREATE_OR_UPDATE_FORM;
         } else {
-            owner.getProducts().add(product);
-            productService.save(product);
+            Product managedProduct = productService.save(product);
+            owner.getProducts().add(managedProduct);
             return "redirect:/owners/" + owner.getId();
         }
     }
