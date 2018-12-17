@@ -48,6 +48,10 @@ public class DataLoader implements CommandLineRunner {
         animal.setName("Animal");
         ProductType savedAnimalProductType = productTypeService.save(animal);
 
+        ProductType car = new ProductType();
+        car.setName("Car");
+        ProductType savedCarProductType = productTypeService.save(car);
+
         // CREATING SPECIALITIES
         Speciality localProvider = new Speciality();
         localProvider.setDescription("Local Provider");
@@ -111,6 +115,19 @@ public class DataLoader implements CommandLineRunner {
         owner3.setAddress("Koszykowa Street, 33/1");
         owner3.setTelephone("601-005-661");
         owner3.setCity("Warsaw");
+        ownerService.save(owner3);
+
+        Product adiProduct = new Product();
+        adiProduct.setProductType(savedCarProductType);
+        adiProduct.setOwner(owner3);
+        adiProduct.setName("Audi");
+        adiProduct.setDescription("Nice black car, imported from Spain");
+        adiProduct.setSize("150x111, 1500kg");
+        adiProduct.setPrice("40000");
+        adiProduct.setImageUrl("http://www.oskarro.com/s043mcirfnv/");
+        adiProduct.setEndLocalization("Gdynia");
+        adiProduct.setStartLocalization("Mazovia");
+        owner3.getProducts().add(adiProduct);
         ownerService.save(owner3);
 
         System.out.println("Loaded Owners...");
