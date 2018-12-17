@@ -58,11 +58,11 @@ public class DataLoader implements CommandLineRunner {
         Speciality savedLocalProvider = specialityService.save(localProvider);
 
         Speciality domesticProvider = new Speciality();
-        localProvider.setDescription("Domestic Provider");
+        domesticProvider.setDescription("Domestic Provider");
         Speciality savedDomesticProvider = specialityService.save(domesticProvider);
 
         Speciality internationalProvider = new Speciality();
-        localProvider.setDescription("International Provider");
+        internationalProvider.setDescription("International Provider");
         Speciality savedInternationalProvider = specialityService.save(internationalProvider);
 
         // CREATING NEW OWNERS
@@ -140,24 +140,25 @@ public class DataLoader implements CommandLineRunner {
         courier1.setLastName("Beckham");
         courier1.setEquipment("Renault Megane 4X");
         courier1.setCompany("Koliber SCO");
-        courierService.save(courier1);
         courier1.getSpecialities().add(savedDomesticProvider);
+        courierService.save(courier1);
+
 
         Courier courier2 = new Courier();
         courier2.setFirstName("Meganne");
         courier2.setLastName(" Awsone");
         courier2.setEquipment("Bike RM-30 Holland");
         courier2.setCompany("UBER Eats");
+        courier2.getSpecialities().add(savedLocalProvider);
         courierService.save(courier2);
-        courier2.getSpecialities().add(savedInternationalProvider);
 
         Courier courier3 = new Courier();
         courier3.setFirstName("John");
         courier3.setLastName("Starridge");
         courier3.setEquipment("Seat Leoan 1.9 TD");
         courier3.setCompany("Koliber SCO");
-        courierService.save(courier3);
         courier3.getSpecialities().add(savedInternationalProvider);
+        courierService.save(courier3);
 
         System.out.println("Loaded Couriers...");
 
