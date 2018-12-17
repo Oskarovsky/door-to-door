@@ -48,17 +48,21 @@ public class DataLoader implements CommandLineRunner {
         animal.setName("Animal");
         ProductType savedAnimalProductType = productTypeService.save(animal);
 
+        ProductType car = new ProductType();
+        car.setName("Car");
+        ProductType savedCarProductType = productTypeService.save(car);
+
         // CREATING SPECIALITIES
         Speciality localProvider = new Speciality();
         localProvider.setDescription("Local Provider");
         Speciality savedLocalProvider = specialityService.save(localProvider);
 
         Speciality domesticProvider = new Speciality();
-        localProvider.setDescription("Domestic Provider");
+        domesticProvider.setDescription("Domestic Provider");
         Speciality savedDomesticProvider = specialityService.save(domesticProvider);
 
         Speciality internationalProvider = new Speciality();
-        localProvider.setDescription("International Provider");
+        internationalProvider.setDescription("International Provider");
         Speciality savedInternationalProvider = specialityService.save(internationalProvider);
 
         // CREATING NEW OWNERS
@@ -113,6 +117,19 @@ public class DataLoader implements CommandLineRunner {
         owner3.setCity("Warsaw");
         ownerService.save(owner3);
 
+        Product adiProduct = new Product();
+        adiProduct.setProductType(savedCarProductType);
+        adiProduct.setOwner(owner3);
+        adiProduct.setName("Audi");
+        adiProduct.setDescription("Nice black car, imported from Spain");
+        adiProduct.setSize("150x111, 1500kg");
+        adiProduct.setPrice("40000");
+        adiProduct.setImageUrl("http://www.oskarro.com/s043mcirfnv/");
+        adiProduct.setEndLocalization("Gdynia");
+        adiProduct.setStartLocalization("Mazovia");
+        owner3.getProducts().add(adiProduct);
+        ownerService.save(owner3);
+
         System.out.println("Loaded Owners...");
 
 
@@ -123,24 +140,25 @@ public class DataLoader implements CommandLineRunner {
         courier1.setLastName("Beckham");
         courier1.setEquipment("Renault Megane 4X");
         courier1.setCompany("Koliber SCO");
-        courierService.save(courier1);
         courier1.getSpecialities().add(savedDomesticProvider);
+        courierService.save(courier1);
+
 
         Courier courier2 = new Courier();
         courier2.setFirstName("Meganne");
         courier2.setLastName(" Awsone");
         courier2.setEquipment("Bike RM-30 Holland");
         courier2.setCompany("UBER Eats");
+        courier2.getSpecialities().add(savedLocalProvider);
         courierService.save(courier2);
-        courier2.getSpecialities().add(savedInternationalProvider);
 
         Courier courier3 = new Courier();
         courier3.setFirstName("John");
         courier3.setLastName("Starridge");
         courier3.setEquipment("Seat Leoan 1.9 TD");
         courier3.setCompany("Koliber SCO");
-        courierService.save(courier3);
         courier3.getSpecialities().add(savedInternationalProvider);
+        courierService.save(courier3);
 
         System.out.println("Loaded Couriers...");
 
