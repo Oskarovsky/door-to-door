@@ -1,9 +1,14 @@
 package com.oskarro.doortodoor.controllers;
 
+import com.oskarro.doortodoor.model.Courier;
 import com.oskarro.doortodoor.services.CourierService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.Set;
 
 @RequestMapping
 @Controller
@@ -22,5 +27,12 @@ public class CourierController {
         // Spring MVC inject the model
         model.addAttribute("couriers", courierService.findAll());
         return "couriers/index";
+    }
+
+    // Couriers JSON Endpoint
+    @GetMapping("/api/couriers")
+    public @ResponseBody Set<Courier> getCouriersJson() {
+
+        return courierService.findAll();
     }
 }
